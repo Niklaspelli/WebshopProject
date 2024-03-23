@@ -1,0 +1,58 @@
+{
+
+"PRODUCTS": [
+    {
+        "id": 1,
+        "productName": "T-shirt",
+        "price": 9,
+        "productDescription": "Designed for comfort and style. Available in a range of vibrant colors, it's a versatile wardrobe staple suitable for any occasion. Elevate your casual look with our timeless t-shirt"
+        
+        
+    },
+    {
+        "id": 2,
+        "productName": "Cool T-shirt",
+        "price": 12,
+        "productDescription": "Classic White Tee: Embrace timeless simplicity with our soft cotton white tee, perfect for everyday wear or layering with your favorite jackets"
+        
+    },
+    {
+        "id": 3,
+        "productName": "Hipster T-shirt",
+        "price": 14,
+        "productDescription": "Graphic Print Statement Tee: Make a bold statement with our eye-catching graphic print tee, featuring vibrant colors and unique designs to express your individuality."
+    },
+    {
+        "id": 4,
+        "productName": "Gamer T-shirt",
+        "price": 9,
+        "productDescription": "Vintage-Inspired Ringer Tee: Channel retro vibes with our vintage-inspired ringer tee, complete with contrast ribbed trim for a touch of nostalgia and style."
+    },
+    {
+        "id": 5,
+        "productName": "Rocker T-Shirt",
+        "price": 8,
+        "productDescription": "Athletic Performance Tee: Elevate your workout with our moisture-wicking performance tee, engineered for optimal comfort and breathability during intense training sessions."
+    },
+    {
+        "id": 6,
+        "productName": "Sports T-Shirt",
+        "price": 14,
+        "productDescription": "Bohemian Tie-Dye Tee: Embrace laid-back boho vibes with our hand-dyed tie-dye tee, each piece boasting a one-of-a-kind pattern for a truly eclectic look."
+    },
+    {
+        "id": 7,
+        "productName": "Swedish T-Shirt",
+        "price": 16,
+        "productDescription": "Essential V-Neck Tee: Upgrade your basics collection with our soft and versatile v-neck tee, designed for a flattering fit that pairs effortlessly with any outfit."
+    },
+    {
+        "id": 8,
+        "productName": "Marabou T-Shirt",
+        "price": 19,
+        "productDescription": "Cozy Oversized Tee: Get comfy and chic with our oversized tee, crafted from ultra-soft fabric for a relaxed yet stylish silhouette that's perfect for lounging or casual outings."
+
+    }
+    
+]
+}
