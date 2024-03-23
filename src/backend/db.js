@@ -24,7 +24,7 @@ database.connect((error) => {
   }
 });
 
-app.get("/data", (req, res) => {
+app.get("/products", (req, res) => {
   database.query("SELECT * FROM id", (err, rows, fields) => {
     if (!err) {
       res.send(rows);
