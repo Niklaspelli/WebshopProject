@@ -19,7 +19,8 @@ function App() {
 <Navbar />
 <Routes>
 <Route path="/searched/:search" element={<Searched />} />
-  <Route path="/shop" element={<Shop />} />
+
+  <Route path="/" element={<Shop />} />
   <Route path="/cart" element={<Cart />} />
 </Routes>
       </Router>

@@ -9,7 +9,7 @@ export function Navbar() {
     <div className="ELnavbar">
       <div className="links">
         
-        <Link to="/shop"> Shop </Link>
+        <Link to="/"> Shop </Link>
         <Link to="#"> Login </Link>
         <Link to="/cart"> 
         <ShoppingCart size={32} /> 

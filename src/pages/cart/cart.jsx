@@ -1,11 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../context/shop-context";
 import { CartItem } from './cart-item';
+import { useNavigate } from "react-router-dom";
+import "./cart.css";
 
 
 export const Cart = () => {
   const [products, setProducts] = useState([]);
-  const { cartItems } = useContext(ShopContext);
+  const { cartItems, getTotalCartAmount } = useContext(ShopContext);
+  const totalAmount = getTotalCartAmount();
+
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch all products from the server (you may adjust the endpoint)
@@ -32,6 +38,18 @@ export const Cart = () => {
          
         })}
       </div>
+{totalAmount > 0 ? (
+<div className="checkout">
+  <p> Subtotal: $ {totalAmount}</p>
+  <button onClick={() => navigate("/")}> Continue Shopping</button>
+  <button> Checkout</button>
+</div>
+) : (<div className="checkout">
+  <h1 className="emptyCart">Your cart is empty!</h1>
+  
+  <button onClick={() => navigate("/")}> Continue Shopping</button>
+  </div>
+)}
     </div>
   );
 }

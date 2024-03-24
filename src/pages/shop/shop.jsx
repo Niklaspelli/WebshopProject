@@ -38,11 +38,3 @@ export function Shop() {
   );
 }
 
-{/* <div key={index}>
-<div className="Product">
-  <h2>{item.productName}</h2>
-  <p>{item.productDescription}</p>
-  <p>Price: {item.price} $</p>
-  <Button onClick={() => addToCart(item)}>Add to Cart</Button>
-</div>
-</div> */}

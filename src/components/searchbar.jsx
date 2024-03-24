@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import {FaSearch} from 'react-icons/fa';
+import './searchbar.css';
 
 export const Searchbar = () => {
 
@@ -19,7 +20,7 @@ const submitHandler = (e) => {
        <div className='topnav'>
       <form onSubmit={submitHandler}>
      <FaSearch />
-      <input onChange={(e) => setInput(e.target.value)} type="text" placeholder="Sök här.." value={input} className='topnav'/>
+      <input onChange={(e) => setInput(e.target.value)} type="text" placeholder="Sök här.." value={input} className='searchbar'/>
       
       </form>
     </div></div>
