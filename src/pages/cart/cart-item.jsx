@@ -10,7 +10,7 @@ export const CartItem = (props) => {
     <div className='cartItem'> 
       <b>{productName}</b>
       <div className='description'> 
-        <p>{productDescription}</p>
+      
         <p>Quantity: {quantity}</p> {/* Display the quantity */}
         <p>Price: $ {price}</p>
       </div>

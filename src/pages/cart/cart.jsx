@@ -2,7 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../../context/shop-context";
 import { CartItem } from './cart-item';
 
-export function Cart() {
+
+export const Cart = () => {
   const [products, setProducts] = useState([]);
   const { cartItems } = useContext(ShopContext);
 
@@ -24,12 +25,11 @@ export function Cart() {
         <h1>Your cart items</h1>
       </div>
       <div className="cartItems">
-        {products.map(product => {
-          // Check if the product is in the cart (quantity > 0)
-          if (cartItems[product.id] !==0) {
-            return <CartItem key={product.id} data={product} />;
+        {products.map((product) => {
+          if (cartItems[product.id] !== 0) {
+            return <CartItem data={product} />
           }
-          return null; // Do not render if quantity is 0
+         
         })}
       </div>
     </div>

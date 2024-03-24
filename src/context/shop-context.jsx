@@ -1,34 +1,35 @@
-import { createContext, useEffect, useState } from 'react'
-import { Shop } from "../pages/shop/shop";
-
+import React, { createContext, useState, useEffect } from 'react';
 
 export const ShopContext = createContext(null);
 
-const getDefaultCart = () => {
-    let cart = {};
-    for (let i = 1; i < Shop.length + 1; i++) {
-        cart[i] = 0;
-    }
-    return cart;
-};
+export const ShopContextProvider = (props) => {
+    const [cartItems, setCartItems] = useState({});
+    const [products, setProducts] = useState([]);
 
- export const ShopContextProvider = (props) => {
-    const [cartItems, setCartItems] = useState(getDefaultCart());
+    useEffect(() => {
+        fetch('http://localhost:3500/PRODUCTS') 
+            .then(res => res.json())
+            .then(products => {
+                setProducts(products);
+            })
+            .catch(error => {
+                console.error('Error fetching products: ', error);
+            });
+    }, []);
 
     const addToCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev [itemId] + 1 }));
+        // Update cartItems state to add the item with the specified itemId
+        setCartItems(prev => ({
+            ...prev,
+            [itemId]: (prev[itemId] || 0) + 1
+        }));
     };
 
-        /* const removoveFromCart = (itemId) => {
-            setCartItems((prev) => ({ ...prev, [itemId]: prev [itemId] - 1 }));
-    } */
-
-
-    const contextValue = { cartItems, addToCart, /* removeFromCart */ };
-
-  return (
-   <ShopContext.Provider value={contextValue}>
-    {props.children}
-    </ShopContext.Provider>
-  );
+    const contextValue = { cartItems, addToCart };
+console.log(cartItems)
+    return (
+        <ShopContext.Provider value={contextValue}>
+            {props.children}
+        </ShopContext.Provider>
+    );
 };
