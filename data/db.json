@@ -1,58 +1,64 @@
 {
 
-"PRODUCTS": [
-    {
-        "id": 1,
-        "productName": "T-shirt",
-        "price": 9,
-        "productDescription": "Designed for comfort and style. Available in a range of vibrant colors, it's a versatile wardrobe staple suitable for any occasion. Elevate your casual look with our timeless t-shirt"
-       
+    "PRODUCTS": [
+        {
+            "id": 1,
+            "productName": "T-shirt",
+            "price": 199,
+            "productDescription": "Tillverkad av högkvalitativt bomullsmaterial som känns mjukt mot huden och håller dig sval och bekväm hela dagen. Med en avslappnad passform och enkel design är denna T-shirt perfekt för alla tillfällen, från avslappnade dagar hemma till dagar på stan. ",
+           "productImage": "./src/assets/shirt1.png"
+            
+        },
+        {
+            "id": 2,
+            "productName": "Cool T-shirt",
+            "price": 179,
+            "productDescription": "Klassisk Vit T-shirt: Omfamna tidlös enkelhet med vår mjuka bomullsvita T-shirt, perfekt för vardagsbruk eller att bära under dina favoritjackor. För den coola personen som värdesätter stil och bekvämlighet i varje outfit.",
+            "productImage": "./src/assets/shirt2.png"
+            
+        },
+        {
+            "id": 3,
+            "productName": "Hipster T-shirt",
+            "price": 149,
+            "productDescription": "Styla dig med vår Hipster Chic T-shirt och ge din look en trendig twist.Modern design som fångar uppmärksamheten. Den här T-shirten är perfekt för den trendmedvetna individen som vill sticka ut från mängden. ",
+            "productImage": "./src/assets/shirt3.png"
+        },
+        {
+            "id": 4,
+            "productName": "Gamer T-shirt",
+            "price": 99,
+            "productDescription": "Med en cool grafisk design som hyllar spelkulturen och ger en extra touch av stil till din outfit. Oavsett om du är en hardcore-gamer eller bara älskar att slå på konsolen ibland, är denna T-shirt ett måste i din garderob.",
+            "productImage": "./src/assets/shirt4.jpg"
+        },
+        {
+            "id": 5,
+            "productName": "Rocker T-Shirt",
+            "price": 189,
+            "productDescription": "Skapa din egen rebelliska stil med vår Rebel Rocker T-shirt. Perfekt för rock- och metalentusiaster som vill uttrycka sin passion för musik även när de inte är på en konsert.Den har en unik och tuff design som fångar andan av rock 'n' roll.",
+            "productImage": "./src/assets/shirt5.png"
+        },
+        {
+            "id": 6,
+            "productName": "Sports T-Shirt",
+            "price": 149,
+            "productDescription": "Bohemian Tie-Dye Tee: Embrace laid-back boho vibes with our hand-dyed tie-dye tee, each piece boasting a one-of-a-kind pattern for a truly eclectic look.",
+            "productImage": "./src/assets/shirt6.png"
+        },
+        {
+            "id": 7,
+            "productName": "Swedish T-Shirt",
+            "price": 169,
+            "productDescription": "Essential V-Neck Tee: Upgrade your basics collection with our soft and versatile v-neck tee, designed for a flattering fit that pairs effortlessly with any outfit.",
+            "productImage": "./src/assets/shirt7.png"
+        },
+        {
+            "id": 8,
+            "productName": "Marabou T-Shirt",
+            "price": 199,
+            "productDescription": "Cozy Oversized Tee: Get comfy and chic with our oversized tee, crafted from ultra-soft fabric for a relaxed yet stylish silhouette that's perfect for lounging or casual outings.",
+            "productImage": "./src/assets/shirt8.png"
+        }
         
-    },
-    {
-        "id": 2,
-        "productName": "Cool T-shirt",
-        "price": 12,
-        "productDescription": "Classic White Tee: Embrace timeless simplicity with our soft cotton white tee, perfect for everyday wear or layering with your favorite jackets"
-        
-    },
-    {
-        "id": 3,
-        "productName": "Hipster T-shirt",
-        "price": 14,
-        "productDescription": "Graphic Print Statement Tee: Make a bold statement with our eye-catching graphic print tee, featuring vibrant colors and unique designs to express your individuality."
-    },
-    {
-        "id": 4,
-        "productName": "Gamer T-shirt",
-        "price": 9,
-        "productDescription": "Vintage-Inspired Ringer Tee: Channel retro vibes with our vintage-inspired ringer tee, complete with contrast ribbed trim for a touch of nostalgia and style."
-    },
-    {
-        "id": 5,
-        "productName": "Rocker T-Shirt",
-        "price": 8,
-        "productDescription": "Athletic Performance Tee: Elevate your workout with our moisture-wicking performance tee, engineered for optimal comfort and breathability during intense training sessions."
-    },
-    {
-        "id": 6,
-        "productName": "Sports T-Shirt",
-        "price": 14,
-        "productDescription": "Bohemian Tie-Dye Tee: Embrace laid-back boho vibes with our hand-dyed tie-dye tee, each piece boasting a one-of-a-kind pattern for a truly eclectic look."
-    },
-    {
-        "id": 7,
-        "productName": "Swedish T-Shirt",
-        "price": 16,
-        "productDescription": "Essential V-Neck Tee: Upgrade your basics collection with our soft and versatile v-neck tee, designed for a flattering fit that pairs effortlessly with any outfit."
-    },
-    {
-        "id": 8,
-        "productName": "Marabou T-Shirt",
-        "price": 19,
-        "productDescription": "Cozy Oversized Tee: Get comfy and chic with our oversized tee, crafted from ultra-soft fabric for a relaxed yet stylish silhouette that's perfect for lounging or casual outings."
-
+    ]
     }
-    
-]
-}

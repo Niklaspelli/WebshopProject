@@ -15,8 +15,9 @@ function App() {
       
     <ShopContextProvider>
       <Router> 
-        <Searchbar />
+<Searchbar />        
 <Navbar />
+
 <Routes>
 <Route path="/searched/:search" element={<Searched />} />
 

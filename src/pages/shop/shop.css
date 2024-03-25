@@ -23,8 +23,8 @@
   .product {
     background: white;
     color: black;
-    width: 300px;
-    height: 350px;
+    width: 400px;
+    height: 450px;
     margin: 100px;
     display: flex;
     flex-direction: column;
@@ -62,4 +62,33 @@
     background-color: rgb(19, 19, 19);
     color: white;
     cursor: pointer;
+  }
+
+  .itemImage {
+   
+    width:100%;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    
+    margin: auto;
+    text-align: center;
+    background: white;
+  }
+
+  .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .card button:hover {
+    opacity: 0.7;
   }
