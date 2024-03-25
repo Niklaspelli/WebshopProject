@@ -16,10 +16,11 @@ const submitHandler = (e) => {
 
 
   return (
-    <div>
-       <div className='topnav'>
+    <div className='topnav'>
+
+       <div className='search-container'>
       <form onSubmit={submitHandler}>
-     <FaSearch />
+     <FaSearch className='svg'/>
       <input onChange={(e) => setInput(e.target.value)} type="text" placeholder="Sök här.." value={input} className='searchbar'/>
       
       </form>

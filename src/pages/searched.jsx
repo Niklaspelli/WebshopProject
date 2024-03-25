@@ -27,6 +27,7 @@ function Searched() {
       {searchedTshirts.length > 0 ? (
         searchedTshirts.map((item) => (
           <div key={item.id}>
+            <img src={productImage} className="itemImage"/>
             <h2>{item.productName}</h2>
             <p>{item.productDescription}</p>
             <p>Price: ${item.price}</p>

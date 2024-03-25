@@ -1,0 +1,33 @@
+
+  
+  .login-dialog {
+    background-color: #ecf0f1; /* Lighter background for dialog */
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  input {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #7f8c8d; /* Subtle border for inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
+  }
+  
+  button {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #27ae60; /* Green background for button */
+    color: #ecf0f1; /* Light text for button */
+    border: none; /* Remove border for button */
+    border-radius: 4px; /* Rounded corners for button */
+  }
+  
+
+  
+  .error {
+    color: #e74c3c; /* Red color for error message */
+    margin-top: 10px;
+  }
