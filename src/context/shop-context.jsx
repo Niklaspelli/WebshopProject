@@ -17,13 +17,17 @@ export const ShopContextProvider = (props) => {
             });
     }, []);
 
-
     const getTotalCartAmount = () => {
         let totalAmount = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
                 let itemInfo = products.find((product) => product.id === Number(item));
-                totalAmount += cartItems[item] * itemInfo.price
+                if (itemInfo) {
+                    totalAmount += cartItems[item] * itemInfo.price;
+                } else {
+                    console.error(`Product with ID ${item} not found.`);
+                    // Optionally, you could handle this case by skipping the item or setting a default price
+                }
             }
         }
         return totalAmount;

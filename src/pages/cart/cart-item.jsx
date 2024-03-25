@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ShopContext } from "../../context/shop-context";
 
 export const CartItem = (props) => {
-  const { id, productName, price, productDescription, productImage } = props.data;
+  const { id, productName, price } = props.data;
   const { cartItems, addToCart, removeFromCart, updateCartItemCount } = useContext(ShopContext);
   const quantity = cartItems[id] || 0; // Default to 0 if the product is not in the cart
 
@@ -10,7 +10,7 @@ export const CartItem = (props) => {
     <div className='product'> 
     
       <b>{productName}</b>
-      <img src={productImage} />
+      
       <div className='description'> 
       
         <p>Quantity:</p> <b className='quantity'>{quantity}</b> {/* Display the quantity */}
