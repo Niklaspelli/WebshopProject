@@ -1,36 +1,38 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-function Searched() {
-  const [searchedTshirts, setSearchedTshirts] = useState([]);
-  const params = useParams();
+export const Searched = () => {
+  const [searchedRecipes, setSearchedRecipes] = useState([]);
+  let params = useParams();
+
+  const getSearched = async () => {
+    try {
+      const api = await fetch("http://localhost:3500/PRODUCTS/" + params.search);
+      const data = await api.json();
+      console.log('Data from API:', data); // Log the data received from the API
+      setSearchedRecipes(data.PRODUCTS);
+    } catch (error) {
+      console.error('Error fetching searched t-shirts:', error);
+    }
+  };
+  
+  useEffect(() => {
+    console.log('Params.search:', params.search); // Log the value of params.search
+    if (params.search) {
+      getSearched(); // Only call getSearched if params.search is defined
+    }
+  }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://localhost:3500/PRODUCTS?i=${params.search}`);
-        const data = await response.json();
-        console.log("Data received from API:", data); // Log the data received from the API
-        setSearchedTshirts(data.PRODUCTS || []); // Set searchedTshirts to the received data
-      } catch (error) {
-        console.error('Error fetching searched T-shirts:', error);
-        setSearchedTshirts([]); // Ensure searchedTshirts is set to an empty array in case of error
-      }
-    };
-  
-    console.log("Search parameter:", params.search); // Log the search parameter
-    fetchData();
-  }, [params.search]);
+    console.log('Searched Recipes:', searchedRecipes); // Log the searchedRecipes state
+  }, [searchedRecipes]);
 
   return (
     <div>
-      {searchedTshirts.length > 0 ? (
-        searchedTshirts.map((item) => (
-          <div key={item.id}>
-            <img src={productImage} className="itemImage"/>
-            <h2>{item.productName}</h2>
-            <p>{item.productDescription}</p>
-            <p>Price: ${item.price}</p>
+      {searchedRecipes.length > 0 ? (
+        searchedRecipes.map((item, index) => (
+          <div key={index}>
+            <h4>{item.productName}</h4>
           </div>
         ))
       ) : (
@@ -38,6 +40,4 @@ function Searched() {
       )}
     </div>
   );
-}
-
-export default Searched;
+};

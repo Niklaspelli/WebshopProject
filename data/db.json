@@ -24,7 +24,7 @@
             "productDescription": "Styla dig med vår Hipster Chic T-shirt och ge din look en trendig twist.Modern design som fångar uppmärksamheten. Den här T-shirten är perfekt för den trendmedvetna individen som vill sticka ut från mängden. ",
             "productImage": "./src/assets/shirt3.png"
         },
-        {
+        { 
             "id": 4,
             "productName": "Gamer T-shirt",
             "price": 99,
@@ -62,3 +62,5 @@
         
     ]
     }
+
+    

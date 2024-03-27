@@ -36,7 +36,7 @@ body {
   min-height: 100vh;
   font-size: 18px;
   /* background: linear-gradient(#cf1414, #292929); */
-  background-image: url("./assets/shirts.jpg");
+
   background-size: cover;
   color: rgb(22, 22, 22);
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
