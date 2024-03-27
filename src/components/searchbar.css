@@ -15,10 +15,7 @@
 } */
 
 
-.topnav {
-  overflow: hidden;
-  background-color: black;
-}
+
 
 .topnav a {
   float: left;
@@ -30,22 +27,19 @@
 }
 
 .topnav a:hover {
-  background-color: #050505;
+
   color:white;
 }
 
-.topnav a.active {
-  background-color: #2196F3;
-  color: white;
-}
+
 
 .topnav input[type=text] {
-  top: 30px;
+ 
  border-radius: 15px;
-  padding: 6px;
+ 
   font-size: 17px;
   border: none;
-  margin: 10px 10px;
+ 
 }
 
 .svg{
@@ -110,7 +104,7 @@ background-color: #efefef;
     text-align: left;
     width: 100%;
     margin: 0;
-    padding: 14px;
+  
   }
   .topnav input[type=text] {
     border: 1px solid #ccc;  

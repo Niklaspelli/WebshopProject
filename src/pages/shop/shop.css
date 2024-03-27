@@ -10,7 +10,7 @@
 .shopTitle {
     margin-top: 100px;
     text-align: center;
-    font-size: 40px;
+    font-size: 25px;
   }
   .products {
     width: 100%;
@@ -18,10 +18,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-items: center;
+    box-shadow: 10px 10px 10px black;;
   }
   
   .product {
-    background: white;
+    
     color: black;
     width: 400px;
     height: 450px;
@@ -70,11 +71,12 @@
   }
 
   .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     
+    
+    box-shadow: 30px 30px pink;
     margin: auto;
     text-align: center;
-    background: white;
+    
   }
 
   .card button {

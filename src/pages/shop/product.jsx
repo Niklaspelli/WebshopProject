@@ -1,22 +1,27 @@
 import { useContext } from "react";
 import { ShopContext } from "../../context/shop-context";
+import { Link } from 'react-router-dom';
+import './shop.css';
+
+
 
 export const Product = ({ data }) => {
-  const { id, productName, price, productDescription, productImage } = data;
+  const { id, productName, price,  productImage } = data;
   const { addToCart, cartItems } = useContext(ShopContext);
 
   const cartItemCount = cartItems[id];
 
   return (
+    
     <div className="card">
-      <h2>{productName}</h2>
+     
+      <h2>{productName}</h2> 
+      <Link to={`/productDetails/${id}`}>
       <img src={productImage} className="itemImage" />
-      <div className="description">
-        <p>{productDescription}</p>
+      </Link>
         <p>Pris: {price}:-</p>
-      </div>
       <button className="addToCartBttn" onClick={() => addToCart(id)}>
-        Lägg till varukorg {cartItemCount > 0 && <> ({cartItemCount}) </>
+        Lägg till varukorg {cartItemCount > 0 && <> ({cartItemCount}) </>  
         }
       </button>
     </div>
