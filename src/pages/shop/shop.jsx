@@ -6,20 +6,17 @@ import "./shop.css"
 export function Shop() {
   const [products, setProducts] = useState([]);
   const { addToCart } = useContext(ShopContext); // Access the addToCart function from the context
-
-  
-  
   
   useEffect(() => {
-    fetch('http://localhost:3500/PRODUCTS')
+    fetch('http://localhost:3000/PRODUCTS')
       .then(res => res.json())
       .then(products => {
-        setProducts(products);
+        setProducts(products.PRODUCTS);
       })
       .catch(error => {
         console.error('Error fetching data: ', error);
       });
-  }, []);
+  }, [products]);
 
   return (
       <div className='shop'>
@@ -27,12 +24,9 @@ export function Shop() {
         <h1>Amazing Shirts</h1>
         </div>
         <div className='products'>
-      {products.map((product) => (
-        // eslint-disable-next-line react/jsx-key
-        <Product key={product.id} data={product} addToCart={addToCart} /> // Pass addToCart as prop to Product component
-
-      
-      ))}
+        {products.length > 0 && products.map((product) => (
+          <Product key={product.id} data={product} addToCart={addToCart} />
+        ))}
     </div> 
     </div>
   );

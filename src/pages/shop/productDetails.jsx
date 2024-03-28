@@ -8,7 +8,7 @@ function ProductDetails() {
 
     const fetchDetails = async (id) => {
         try {
-            const api = await fetch(`http://localhost:3500/PRODUCTS/${id}`);
+            const api = await fetch(`http://localhost:3000/PRODUCTS/${id}`);
             const detailData = await api.json();
             console.log(detailData); // Log the data to see its structure
             if (Object.keys(detailData).length > 0) {

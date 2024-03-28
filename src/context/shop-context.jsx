@@ -7,15 +7,15 @@ export const ShopContextProvider = (props) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3500/PRODUCTS') 
+        fetch('http://localhost:3000/PRODUCTS') 
             .then(res => res.json())
             .then(products => {
-                setProducts(products);
+                setProducts(products.PRODUCTS);
             })
             .catch(error => {
                 console.error('Error fetching products: ', error);
             });
-    }, []);
+    }, [cartItems]);
 
     const getTotalCartAmount = () => {
         let totalAmount = 0;

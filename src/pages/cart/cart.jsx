@@ -12,11 +12,12 @@ export const Cart = () => {
 
   useEffect(() => {
     // Fetch all products from the server (you may adjust the endpoint)
-    fetch('http://localhost:3500/PRODUCTS')
+    fetch('http://localhost:3000/PRODUCTS')
       .then(res => res.json())
       .then(products => {
         // Filter products to only include those in the cart
-        const productsInCart = products.filter(product => cartItems[product.id] > 0);
+        const productsInCart = products.PRODUCTS.filter(product => cartItems[product.id] > 0);
+        console.log('Products in cart:', productsInCart); // Add this line
         setCartProducts(productsInCart);
       })
       .catch(error => {

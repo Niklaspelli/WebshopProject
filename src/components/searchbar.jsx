@@ -6,7 +6,7 @@ export const SearchBar = ({ setResults }) => {
 
 const [input, setInput] = useState("");
 const fetchData = (value) => {
-  fetch('http://localhost:3500/PRODUCTS')
+  fetch('http://localhost:3000/PRODUCTS')
   .then((response) => response.json())
   .then((json) => {
     const results = json.filter((product) => {
