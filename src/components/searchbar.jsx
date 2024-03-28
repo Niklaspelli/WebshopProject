@@ -26,12 +26,10 @@ const handleChange = (value) => {
 };
 
   return (
-    <div className='topnav'>
-       <div className='search-container'>
+    <div className='topnav'> 
         <FaSearch className='svg'/>
-      <input onChange={(e) => handleChange(e.target.value)} type="text" placeholder="Sök här.." value={input} className='searchbar'/>
-      </div>
-      </div>
+      <input onChange={(e) => handleChange(e.target.value)} type="text" placeholder="Sök din T-shirt.." value={input} className='searchbar'/>
+      </div>  
   )
 }
 
