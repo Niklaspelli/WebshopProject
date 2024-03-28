@@ -9,7 +9,7 @@ const fetchData = (value) => {
   fetch('http://localhost:3000/PRODUCTS')
   .then((response) => response.json())
   .then((json) => {
-    const results = json.filter((product) => {
+    const results = json.PRODUCTS.filter((product) => {
       return (
         value &&
         product &&
