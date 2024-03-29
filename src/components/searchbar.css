@@ -41,14 +41,14 @@
 }
 
 .searchbar {
-  height: 50px;
+  height: 55px;
   width: 400px;
 }
 
 .svg{
   color: white;
   position: absolute;
-  top: 12%;
+  top: 10%;
   right: 40%;
  
   
@@ -121,3 +121,12 @@ background-color: #efefef;
     border: 1px solid #ccc;  
   }
 }
+
+@media screen and (min-width: 1000px) {
+
+  .svg {
+    top: 12%;
+  }
+
+}
+  

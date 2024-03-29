@@ -3,6 +3,8 @@ import '../../components/searchbar.css';
 
 export const SearchResult = ({ result }) => {
   return (
+  <div>
+  <h1>Sökresultat:</h1>
     <div className='card'> 
     
     <b>{result.productName}</b>
@@ -11,7 +13,7 @@ export const SearchResult = ({ result }) => {
   
       </div>
     </div>
-
+</div>
   )
 }
 
