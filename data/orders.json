@@ -1,1 +1,1 @@
-[{"orderID":"1","productName":"Haparanda","content":"Första inlägget!"}]
+[{"items":[{"productId":5,"quantity":1}],"totalAmount":189},{"items":[{"productId":5,"quantity":1},{"productId":6,"quantity":8}],"totalAmount":1381},{"items":[{"productId":5,"quantity":1},{"productId":6,"quantity":8}],"totalAmount":1381},{"items":[{"productId":3,"quantity":1},{"productId":5,"quantity":1}],"totalAmount":338},{"items":[{"productId":5,"quantity":20}],"totalAmount":3780},{"items":[{"productId":4,"quantity":1}],"totalAmount":99}]

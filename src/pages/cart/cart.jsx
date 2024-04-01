@@ -6,9 +6,56 @@ import "./cart.css";
 
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
+  const [orderPlaced, setOrderPlaced] = useState(false); // New state variable for order placement
   const { cartItems, getTotalCartAmount } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
+
+  // Function to calculate the total price amount
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    cartProducts.forEach(product => {
+      totalPrice += product.price * cartItems[product.id];
+    });
+    return totalPrice;
+  };
+
+  // Function to prepare the order data
+  const prepareOrderData = () => {
+    const orderItems = cartProducts.map(product => ({
+      productId: product.id,
+      quantity: cartItems[product.id]
+    }));
+    return {
+      items: orderItems,
+      totalAmount: calculateTotalPrice()
+    };
+  };
+
+  // Function to send the order to the API
+  const sendOrderToAPI = async () => {
+    const orderData = prepareOrderData();
+    try {
+      const response = await fetch('http://localhost:3000/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(orderData)
+      });
+      if (response.ok) {
+        console.log('Order placed successfully!');
+        setOrderPlaced(true); // Set orderPlaced to true after successful order placement
+        setCartProducts([]); // Empty the cart after successful order placement
+      } else {
+        console.error('Failed to place order:', response.statusText);
+        // Handle failed order placement
+      }
+    } catch (error) {
+      console.error('Error placing order:', error);
+      // Handle error while placing the order
+    }
+  };
 
   useEffect(() => {
     // Fetch all products from the server (you may adjust the endpoint)
@@ -36,18 +83,27 @@ export const Cart = () => {
         ))}
       </div>
       
-      {totalAmount > 0 ? (
+      {orderPlaced ? (
         <div className="checkout">
-          <p className="subtotal"> Summa:  {totalAmount}:-</p>
-          <button onClick={() => navigate("/")}> Fortsätt Handla</button>
-          <button> Kassa</button>
+          <h2>Tack för din beställning! Skickas inom 3-5 arbetsdagar!</h2>
+          <button onClick={() => navigate("/")}>Fortsätt Handla</button>
         </div>
       ) : (
         <div className="checkout">
-          <h1 className="emptyCart">Din varukorg är tom!</h1>
-          <button onClick={() => navigate("/")}> Fortsätt Handla</button>
+          {totalAmount > 0 ? (
+            <>
+              <p className="subtotal">Summa: {totalAmount}:-</p>
+              <button onClick={() => navigate("/")}>Fortsätt Handla</button>
+              <button onClick={sendOrderToAPI}>Kassa</button>
+            </>
+          ) : (
+            <>
+              <h1 className="emptyCart">Din varukorg är tom!</h1>
+              <button onClick={() => navigate("/")}>Fortsätt Handla</button>
+            </>
+          )}
         </div>
       )}
     </div>
   );
-}
+};

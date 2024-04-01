@@ -1,18 +1,21 @@
 import express from "express";
+import { v4 as uuidv4 } from "uuid";
 import bodyParser from "body-parser";
 import cors from "cors";
 import fs from "fs";
 /* import getUsers from "./getUsers";
-import bcrypt from "bcrypt" */ const app = express();
+import bcrypt from "bcrypt"; */
+const app = express();
 const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
 
 const filePath = "../../data/db.json";
-/* const usersPath = "../../data/users.json"; */
 
-/* // Register endpoint
+/* const usersPath = "../../data/users.json";
+
+// Register endpoint
 app.post("/users", async (req, res) => {
   // Extract user data from the request body
   const { user, pwd } = req.body;
@@ -81,9 +84,44 @@ app.post("/login", (req, res) => {
     // If user is not found, return error response
     res.status(401).json({ error: "Invalid username or password" });
   }
+}); */
+const ordersPath = "../../data/orders.json";
+
+// Route to handle POST requests for orders
+app.post("/orders", (req, res) => {
+  fs.readFile(ordersPath, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading file:", err);
+      return res.status(500).send("Error reading file");
+    }
+
+    try {
+      let existingOrders = JSON.parse(data); // Parse existing orders data
+
+      // Check if existing orders is an array
+      if (!Array.isArray(existingOrders)) {
+        existingOrders = []; // If not, initialize it as an empty array
+      }
+
+      // Add the new order to the array
+      existingOrders.push(req.body);
+
+      // Write the updated orders data back to the JSON file
+      fs.writeFile(ordersPath, JSON.stringify(existingOrders), (err) => {
+        if (err) {
+          console.error("Error writing file:", err);
+          return res.status(500).send("Error writing file");
+        }
+        // Send a success response
+        res.status(201).json({ message: "Order placed successfully" });
+      });
+    } catch (error) {
+      console.error("Error parsing JSON data:", error);
+      res.status(500).send("Error parsing JSON data");
+    }
+  });
 });
- */
-// Route att hantera GET request för JSON data
+
 app.get("/products", (req, res) => {
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {

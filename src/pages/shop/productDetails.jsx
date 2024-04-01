@@ -39,13 +39,11 @@ function ProductDetails() {
     return (
         <div className='main'>
             {loading ? (
-                <div>Loading...</div> // Show loading indicator while fetching data
+                <div>Loading...</div>
             ) : (
                 <React.Fragment>
-                   
-                    {/* Render product details */}
                     <h2>{productName}</h2>
-                    <img src={productImage}  />
+                    {productImage && <img src={data.productImage} alt={data.productName} />}
                     <Card>
                         <div className='container'>
                             <div className='cardItem'>
@@ -54,11 +52,8 @@ function ProductDetails() {
                             <button className="addToCartBttn" onClick={() => addToCart(id)}> Lägg till varukorg {cartItemCount > 0 && <> ({cartItemCount}) </>  }
                             </button>
                             </div>
-                        </div>
-                        
+                        </div>                       
                     </Card>
-                    
-                    {/* Add more details as needed */}
                 </React.Fragment>
             )}
         </div>
