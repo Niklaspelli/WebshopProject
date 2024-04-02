@@ -3,20 +3,16 @@ import { v4 as uuidv4 } from "uuid";
 import bodyParser from "body-parser";
 import cors from "cors";
 import fs from "fs";
-/* import getUsers from "./getUsers";
-import bcrypt from "bcrypt"; */
+
 const app = express();
 const port = 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
 
-const filePath = "../../data/db.json";
+const usersPath = "../../data/users.json";
 
-/* const usersPath = "../../data/users.json";
-
-// Register endpoint
-app.post("/users", async (req, res) => {
+app.post("/users", (req, res) => {
   // Extract user data from the request body
   const { user, pwd } = req.body;
 
@@ -27,64 +23,70 @@ app.post("/users", async (req, res) => {
       .json({ error: "Username and password are required" });
   }
 
-  try {
-    // Generate salt and hash the password
-    const saltRounds = 10; // Adjust according to your security requirements
-    const hashedPwd = await bcrypt.hash(pwd, saltRounds);
-
-    // Load existing user data from the JSON file using getUsers function
-    const users = getUsers();
-
-    // Check if the username already exists
-    const existingUser = users.find((userObj) => userObj.user === user);
-    if (existingUser) {
-      return res.status(409).json({ error: "Username already exists" });
+  // Load existing user data from the JSON file
+  fs.readFile(usersPath, "utf8", (err, data) => {
+    if (err) {
+      console.error("Error reading file:", err);
+      return res.status(500).send("Error reading file");
     }
 
-    // Add the new user to the list with hashed password
-    users.push({ user, pwd: hashedPwd });
+    try {
+      const users = JSON.parse(data);
 
-    // Save the updated user data back to the JSON file
-    fs.writeFile(usersPath, JSON.stringify(users), (err) => {
-      if (err) {
-        console.error("Error writing file:", err);
-        return res.status(500).send("Error writing file");
+      // Check if the username already exists
+      const existingUser = users.find((u) => u.user === user);
+      if (existingUser) {
+        return res.status(409).json({ error: "Username already exists" });
       }
-      // Send a success response
-      res.status(201).json({ message: "User registered successfully" });
-    });
-  } catch (error) {
-    console.error("Error hashing password:", error);
-    res.status(500).send("Error hashing password");
-  }
+
+      // Generate a unique ID for the new user
+      const userId = uuidv4();
+
+      // Add the new user with unique ID to the list
+      users.push({ id: userId, user, pwd });
+
+      // Save the updated user data back to the JSON file
+      fs.writeFile(usersPath, JSON.stringify(users), (err) => {
+        if (err) {
+          console.error("Error writing file:", err);
+          return res.status(500).send("Error writing file");
+        }
+        // Send a success response
+        res
+          .status(201)
+          .json({ message: "User registered successfully", userId });
+      });
+    } catch (error) {
+      console.error("Error parsing JSON data:", error);
+      res.status(500).send("Error parsing JSON data");
+    }
+  });
 });
+
+const getUsers = () => {
+  const usersData = fs.readFileSync(usersPath);
+  return JSON.parse(usersData);
+};
 
 // Login endpoint
 app.post("/login", (req, res) => {
   const { user, pwd } = req.body;
-  const users = getUsers(); // Load user data using getUsers function
+  const users = getUsers();
 
   // Find the user in the JSON data
-  const matchedUser = users.find((u) => u.user === user);
+  const matchedUser = users.find((u) => u.user === user && u.pwd === pwd);
 
   if (matchedUser) {
-    // Compare hashed password
-    bcrypt.compare(pwd, matchedUser.pwd, (err, result) => {
-      if (result) {
-        // If password matches, return success response with redirect URL
-        res
-          .status(200)
-          .json({ message: "Login successful", redirect: "/dashboard" });
-      } else {
-        // If password does not match, return error response
-        res.status(401).json({ error: "Invalid username or password" });
-      }
-    });
+    // If user is found, return success response with redirect URL
+    res
+      .status(200)
+      .json({ message: "Login successful", redirect: "/dashboard" });
   } else {
     // If user is not found, return error response
     res.status(401).json({ error: "Invalid username or password" });
   }
-}); */
+});
+
 const ordersPath = "../../data/orders.json";
 
 // Route to handle POST requests for orders
@@ -121,6 +123,8 @@ app.post("/orders", (req, res) => {
     }
   });
 });
+
+const filePath = "../../data/db.json";
 
 app.get("/products", (req, res) => {
   fs.readFile(filePath, "utf8", (err, data) => {

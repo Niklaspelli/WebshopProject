@@ -3,8 +3,8 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './login.css';
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const USER_REGEX = /^[A-Öa-ö][A-z0-9-_åäöÅÄÖ]{3,23}$/;
+const PWD_REGEX = /^(?=.*[a-zåäö])(?=.*[A-ÖÅÄÖ])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const REGISTER_URL = '/register'
 
@@ -92,7 +92,7 @@ const handleSubmit = async (e) => {
         <section>
             <h1>Lyckad registrering!</h1>
             <p>
-                <a href="#">Logga in</a>
+                <a href="/login">Logga in</a>
             </p>
         </section>
     ) : (
@@ -101,7 +101,8 @@ const handleSubmit = async (e) => {
      
 <p ref={errRef} className={errMsg ? "errmsg" :
 "offscreen"} aria-live="assertive">{errMsg}</p>
- <h1>Registrera</h1>
+ <h1>Skapa Konto</h1>
+ <div className='form-container'>
  <form onSubmit={handleSubmit}>
     <label hmtlFor="username">
         Användarnamn:
@@ -126,9 +127,9 @@ const handleSubmit = async (e) => {
     />
        <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
-                            4 to 24 characters.<br />
-                            Must begin with a letter.<br />
-                            Letters, numbers, underscores, hyphens allowed.
+                            4 till 24 tecken.<br />
+                            Måste börja med en bokstak.<br />
+                            Bokstäver, nummer, understreck, bindesstreck är tillåtet.
                         </p>
                         <label hmtlFor="password">
         Lösenord:
@@ -148,9 +149,9 @@ const handleSubmit = async (e) => {
     />
  <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
  <FontAwesomeIcon icon={faInfoCircle} />
- 8 to 24 characters.<br />
- Must include uppercase and lowercase letters, a number and a special character.<br />
-Allowed special characters: 
+ 8 till 24 tecken.<br />
+ Måste inkludera både stora och små bokstäver, en siffra och ett specialtecken.<br />
+ Tillåtna specialtecken är:
 <span aria-label="exclamation mark">!</span>
 <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> 
 <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
@@ -181,6 +182,7 @@ Allowed special characters:
                 <button disabled={!validName || !validPwd || !validMatch ? true : false}> Registrera </button>        
 
  </form>
+ </div>
     </section>
 
     

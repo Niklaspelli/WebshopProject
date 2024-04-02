@@ -126,3 +126,11 @@ button {
 .line {
     display: inline-block;
 }
+
+
+.form-container {
+    display:flex;
+    position: relative;
+    margin: 2rem;
+    justify-content: center;
+}

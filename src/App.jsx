@@ -1,6 +1,7 @@
 import "./App.css";
 import { Shop } from './pages/shop/shop';
 import { Cart } from './pages/cart/cart'; 
+import { Checkout } from './pages/checkout/checkout';
 import { Navbar } from './components/navbar';
 import { Search } from './Search';
 import { Login } from './components/login';
@@ -31,6 +32,7 @@ function App() {
   <Route path="/" element={<Shop />} />
   <Route path="/productDetails/:id" element={<ProductDetails  />} />
   <Route path="/cart" element={<Cart />} />
+  <Route path="/checkout" element={<Checkout />} />
 </Routes>
       </Router>
       </ShopContextProvider>

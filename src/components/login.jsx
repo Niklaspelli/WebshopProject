@@ -61,7 +61,7 @@ export const Login = () => {
         </div>
         <div className="login-container">
           <button type="submit" className="login-button">Login</button>
-          <button onClick={() => navigate("/register")} className="Register-button">Register</button>
+          <button onClick={() => navigate("/register")} className="Register-button">Skapa</button>
         </div>
       </form>
       {errorMessage && <p>{errorMessage}</p>}

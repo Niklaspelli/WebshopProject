@@ -6,7 +6,7 @@ import "./cart.css";
 
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
-  const [orderPlaced, setOrderPlaced] = useState(false); // New state variable for order placement
+  const [orderPlaced, setOrderPlaced] = useState(false);
   const { cartItems, getTotalCartAmount } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
@@ -45,26 +45,22 @@ export const Cart = () => {
       });
       if (response.ok) {
         console.log('Order placed successfully!');
-        setOrderPlaced(true); // Set orderPlaced to true after successful order placement
-        setCartProducts([]); // Empty the cart after successful order placement
+        setOrderPlaced(true);
+        setCartProducts([]);
+        navigate('/checkout'); // Navigate to the checkout page after successful order placement
       } else {
         console.error('Failed to place order:', response.statusText);
-        // Handle failed order placement
       }
     } catch (error) {
       console.error('Error placing order:', error);
-      // Handle error while placing the order
     }
   };
 
   useEffect(() => {
-    // Fetch all products from the server (you may adjust the endpoint)
     fetch('http://localhost:3000/PRODUCTS')
       .then(res => res.json())
       .then(products => {
-        // Filter products to only include those in the cart
         const productsInCart = products.PRODUCTS.filter(product => cartItems[product.id] > 0);
-        console.log('Products in cart:', productsInCart); // Add this line
         setCartProducts(productsInCart);
       })
       .catch(error => {
@@ -73,7 +69,7 @@ export const Cart = () => {
   }, [cartItems]);
 
   return (
-    <div className="cart">
+    <div>
       <div>
         <h1>Din Varukorg:</h1>
       </div>
@@ -86,20 +82,20 @@ export const Cart = () => {
       {orderPlaced ? (
         <div className="checkout">
           <h2>Tack för din beställning! Skickas inom 3-5 arbetsdagar!</h2>
-          <button onClick={() => navigate("/")}>Fortsätt Handla</button>
+          <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
         </div>
       ) : (
         <div className="checkout">
           {totalAmount > 0 ? (
             <>
               <p className="subtotal">Summa: {totalAmount}:-</p>
-              <button onClick={() => navigate("/")}>Fortsätt Handla</button>
-              <button onClick={sendOrderToAPI}>Kassa</button>
+              <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
+              <button onClick={sendOrderToAPI} className="cart-button">Kassa</button>
             </>
           ) : (
             <>
               <h1 className="emptyCart">Din varukorg är tom!</h1>
-              <button onClick={() => navigate("/")}>Fortsätt Handla</button>
+              <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
             </>
           )}
         </div>
