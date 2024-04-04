@@ -42,24 +42,30 @@
             "id": 6,
             "productName": "Sports T-Shirt",
             "price": 149,
-            "productDescription": "Bohemian Tie-Dye Tee: Embrace laid-back boho vibes with our hand-dyed tie-dye tee, each piece boasting a one-of-a-kind pattern for a truly eclectic look.",
+            "productDescription": "En sports-t-shirt är vanligtvis tillverkad av tekniskt material som andas och transporterar bort fukt från kroppen. Den är designad för att ge komfort och rörelsefrihet under fysisk aktivitet. Typiskt har den en avslappnad passform och kan ha detaljer som ventilerande paneler eller reflexdetaljer för ökad synlighet. Den finns i olika stilar och färger, och kan ibland ha tryck eller logotyper relaterade till en specifik sport eller varumärke.",
             "productImage": "./src/assets/shirt6.png"
         },
         {
             "id": 7,
-            "productName": "Swedish T-Shirt",
+            "productName": "Amazing T-Shirt",
             "price": 169,
-            "productDescription": "Essential V-Neck Tee: Upgrade your basics collection with our soft and versatile v-neck tee, designed for a flattering fit that pairs effortlessly with any outfit.",
+            "productDescription": "Avslappnad Charm T-shirt: Omfamna en avslappnad charm med vår unika oversized t-shirt. Tillverkad av lätt och luftigt material för en ledig och bekväm passform, perfekt för dagar när du vill känna dig avslappnad men ändå stilfull. Denna t-shirt har en avslappnad silhuett som passar för både vardagsbruk och speciella tillfällen. Njut av dess mångsidighet och förmåga att lägga till en touch av avslappnad elegans till din outfit.",
             "productImage": "./src/assets/shirt7.png"
         },
         {
             "id": 8,
             "productName": "Marabou T-Shirt",
             "price": 199,
-            "productDescription": "Cozy Oversized Tee: Get comfy and chic with our oversized tee, crafted from ultra-soft fabric for a relaxed yet stylish silhouette that's perfect for lounging or casual outings.",
+            "productDescription": "Den mysiga oversized-tishan erbjuder både komfort och stil. Tillverkad av ultra-mjukt tyg, ger den en avslappnad men ändå elegant siluett, perfekt för att slappa eller avslappnade tillfällen. Med sin rymliga passform och mjuka textur är denna tisha designad för att hålla dig bekväm samtidigt som du ser helt avslappnat stilfull ut.",
             "productImage": "./src/assets/shirt8.png"
+        },
+        {
+        "id": 9,
+        "productName": "Tiger T-Shirt",
+        "price": 129,
+        "productDescription": "Naturlig Oversized T-shirt: Upptäck en perfekt balans mellan komfort och stil med vår naturligt stora t-shirt. Tillverkad av mjukt och hållbart material för en avslappnad, men ändå sofistikerad silhuett, som passar perfekt för avslappnade tillfällen eller dagar på språng. Med sin generösa passform och naturliga känsla är denna t-shirt designad för att ge dig både komfort och en touch av stil.",
+        "productImage": "./src/assets/shirt9.png"
         }
-        
     ]
     }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from "styled-components";
-import { ShopContext } from "../../context/shop-context";
+import { ShopContext } from "../../context/Shop-Context";
 
 function ProductDetails() {
     const [data, setData] = useState({});

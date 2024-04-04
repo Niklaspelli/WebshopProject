@@ -4,8 +4,6 @@
   background: white;
     color: black;
 } 
-
-
 .products {
     width: 100%;
     height: auto;
@@ -99,13 +97,11 @@
   }
 
   .cartItems {
- display:inline-block;
-        position: relative;
-        margin: 2rem;
-        justify-content: center;
+    display:inline-block;
+    position: relative;
+    margin: 2rem;
+    justify-content: center;    
   }
-
-
   .cart-button {
     font-size: 18px;
   }

@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { ShopContext } from "../../context/shop-context";
+import { ShopContext } from "../../context/Shop-Context";
 import { Link } from 'react-router-dom';
-import './shop.css';
+import './Shop.css';
 
 
 

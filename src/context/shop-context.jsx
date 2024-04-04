@@ -1,8 +1,8 @@
-import React, { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export const ShopContext = createContext(null);
 
-export const ShopContextProvider = (props) => {
+export const ShopContextProvider = (props, token) => {
     const [cartItems, setCartItems] = useState({});
     const [products, setProducts] = useState([]);
 
@@ -26,13 +26,13 @@ export const ShopContextProvider = (props) => {
                     totalAmount += cartItems[item] * itemInfo.price;
                 } else {
                     console.error(`Product with ID ${item} not found.`);
-                    // Optionally, you could handle this case by skipping the item or setting a default price
+                    
                 }
             }
         }
         return totalAmount;
     };
-
+    
     const addToCart = (itemId) => {
        
         setCartItems((prev) => ({
@@ -62,7 +62,8 @@ export const ShopContextProvider = (props) => {
          addToCart, 
          removeFromCart, 
          updateCartItemCount,
-        getTotalCartAmount };
+        getTotalCartAmount,
+        };
 console.log(cartItems)
     return (
         <ShopContext.Provider value={contextValue}>

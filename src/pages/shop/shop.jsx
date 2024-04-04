@@ -1,7 +1,9 @@
 import  { useState, useEffect, useContext } from 'react';
-import { ShopContext } from "../../context/shop-context";
-import { Product } from "./product";
-import "./shop.css"
+import { ShopContext } from "../../context/Shop-Context";
+import { Product } from "./Product";
+import { motion } from 'framer-motion';
+import { styled } from 'styled-components';
+import "./Shop.css"
 
 export function Shop() {
   const [products, setProducts] = useState([]);
@@ -19,6 +21,11 @@ export function Shop() {
   }, [products]);
 
   return (
+    <Grid 
+    animate={{ opacity: 5 }}
+    initial={{ opacity: 0 }}
+    exit={{ opacity: 0}}
+    transition={{ duration: 1 }}>
       <div className='shop'>
         <div className='shopTitle'>
         <h1>Amazing Shirts</h1>
@@ -29,5 +36,15 @@ export function Shop() {
         ))}
     </div> 
     </div>
+    </Grid>
   );
 }
+
+
+
+const Grid = styled(motion.div)`
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+grid-grap: 3rem;
+
+`;

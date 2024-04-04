@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import "./components/searchbar.css";
+import "./Searchbar.css";
 
-import { SearchBar } from "./components/searchbar";
-import SearchResultsList from './pages/searchresult/SearchResultsList';
+import { SearchBar } from "./Searchbar";
+import SearchResultsList from '../../pages/searchresult/SearchResultsList';
 
 
 export const Search = () => {

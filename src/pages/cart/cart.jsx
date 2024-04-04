@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { ShopContext } from "../../context/shop-context";
-import { CartItem } from './cart-item';
+import { ShopContext } from "../../context/Shop-Context";
+import { CartItem } from './Cart-Item';
+import { Checkout } from '../checkout/Checkout'
 import { useNavigate } from "react-router-dom";
-import "./cart.css";
+import { motion } from 'framer-motion';
+import { styled } from 'styled-components';
+import "./Cart.css";
 
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
@@ -11,7 +14,7 @@ export const Cart = () => {
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
 
-  // Function to calculate the total price amount
+  //Funktion för att räkna ihop total priset
   const calculateTotalPrice = () => {
     let totalPrice = 0;
     cartProducts.forEach(product => {
@@ -20,7 +23,7 @@ export const Cart = () => {
     return totalPrice;
   };
 
-  // Function to prepare the order data
+ //Funktion för att förbereda order datan
   const prepareOrderData = () => {
     const orderItems = cartProducts.map(product => ({
       productId: product.id,
@@ -30,30 +33,6 @@ export const Cart = () => {
       items: orderItems,
       totalAmount: calculateTotalPrice()
     };
-  };
-
-  // Function to send the order to the API
-  const sendOrderToAPI = async () => {
-    const orderData = prepareOrderData();
-    try {
-      const response = await fetch('http://localhost:3000/orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(orderData)
-      });
-      if (response.ok) {
-        console.log('Order placed successfully!');
-        setOrderPlaced(true);
-        setCartProducts([]);
-        navigate('/checkout'); // Navigate to the checkout page after successful order placement
-      } else {
-        console.error('Failed to place order:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error placing order:', error);
-    }
   };
 
   useEffect(() => {
@@ -69,6 +48,11 @@ export const Cart = () => {
   }, [cartItems]);
 
   return (
+    <Grid 
+    animate={{ opacity: 5 }}
+    initial={{ opacity: 0 }}
+    exit={{ opacity: 0}}
+    transition={{ duration: 1 }}>
     <div>
       <div>
         <h1>Din Varukorg:</h1>
@@ -88,9 +72,16 @@ export const Cart = () => {
         <div className="checkout">
           {totalAmount > 0 ? (
             <>
+             
+              
+              <Checkout 
+                setCartProducts={prepareOrderData} 
+                cartProducts={cartProducts}
+                totalAmount={totalAmount}
+              /> 
               <p className="subtotal">Summa: {totalAmount}:-</p>
-              <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
-              <button onClick={sendOrderToAPI} className="cart-button">Kassa</button>
+             
+             {/*  <button onClick={sendOrderToAPI} className="cart-button">Kassa</button> */}
             </>
           ) : (
             <>
@@ -98,8 +89,19 @@ export const Cart = () => {
               <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
             </>
           )}
+         
         </div>
       )}
     </div>
+      
+   
+  </Grid>
   );
 };
+
+const Grid = styled(motion.div)`
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+grid-grap: 3rem;
+
+`;

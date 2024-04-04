@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-export const Checkout = () => {
+export const Checkout = ({ setCartProducts, cartProducts, totalAmount }) => {
   const navigate = useNavigate();
   const [shippingInfo, setShippingInfo] = useState({
     name: '',
@@ -39,19 +39,25 @@ export const Checkout = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const orderData = {
+        shippingInfo: shippingInfo,
+        paymentInfo: paymentInfo,
+        cartProducts: cartProducts,
+        totalAmount: totalAmount 
+      };
+  
       const response = await fetch('http://localhost:3000/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          shippingInfo,
-          paymentInfo
-        })
+        body: JSON.stringify(orderData)
       });
+  
       if (response.ok) {
         console.log('Order placed successfully!');
         setOrderPlaced(true);
+        setCartProducts([]);
       } else {
         console.error('Failed to place order:', response.statusText);
       }
@@ -107,6 +113,7 @@ export const Checkout = () => {
 
           <Card>
             <button type="submit" className='cart-button'>Skicka ordern</button>
+            <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
           </Card>
         </form>
       )}

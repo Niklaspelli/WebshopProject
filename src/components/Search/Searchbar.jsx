@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {FaSearch} from 'react-icons/fa';
-import '../components/searchbar.css';
+import './Searchbar.css';
 
 export const SearchBar = ({ setResults }) => {
 
@@ -32,4 +32,3 @@ const handleChange = (value) => {
       </div>  
   )
 }
-

@@ -1,6 +1,4 @@
-
-  
-  .login-dialog {
+.login-dialog {
     background-color: #ecf0f1; /* Lighter background for dialog */
     padding: 20px;
     border-radius: 8px;
@@ -38,8 +36,6 @@
     color: #e74c3c; /* Red color for error message */
     margin-top: 10px;
   }
-
-
   section {
     width: 100%;
     max-width: 420px;
@@ -125,12 +121,4 @@ button {
 
 .line {
     display: inline-block;
-}
-
-
-.form-container {
-    display:flex;
-    position: relative;
-    margin: 2rem;
-    justify-content: center;
 }

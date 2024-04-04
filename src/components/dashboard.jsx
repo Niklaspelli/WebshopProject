@@ -1,84 +1,55 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export const Dashboard = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [address, setAddress] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [errMsg, setErrMsg] = useState('');
-  const [userId] = useState('');
+export const Dashboard = ({ token }) => {
+  const [userData, setUserData] = useState(null);
+  const [setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:3000/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId: userId, // Assuming userId is available in your component state
-          firstName,
-          lastName,
-          address,
-          postalCode,
-        }),
-      });
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userResponse = await fetch('http://localhost:3000/users', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (!userResponse.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+        const userData = await userResponse.json();
+        setUserData(userData);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
       }
-      const data = await response.json();
-      console.log(data);
-      setSuccess(true);
-    } catch (err) {
-      console.error(err);
-      setErrMsg('Registration Failed');
-    }
+    };
+
+    fetchUserData();
+  }, [token]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
   };
+  useEffect(() => {
+    console.log(userData);
+  }, [userData]);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div>
-      {success ? (
-        <p>Tack för att du har fyllt i dina uppgifter!</p>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="firstName">Förnamn:</label>
-          <input
-            type="text"
-            id="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-          />
-          <label htmlFor="lastName">Efternamn:</label>
-          <input
-            type="text"
-            id="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-          />
-          <label htmlFor="address">Adress:</label>
-          <input
-            type="text"
-            id="address"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            required
-          />
-          <label htmlFor="postalCode">Postnummer:</label>
-          <input
-            type="text"
-            id="postalCode"
-            value={postalCode}
-            onChange={(e) => setPostalCode(e.target.value)}
-            required
-          />
-          <button type="submit">Skicka</button>
-        </form>
+      <h2>Kundkonto</h2>
+      {userData && (
+        <p>Välkommen, {userData.id}!</p>
       )}
-      {errMsg && <p>{errMsg}</p>}
+      <button onClick={handleLogout}>Log Out</button>
+      <p>Tanken är att man ska kunna se sina gamla odrar här!</p>
     </div>
   );
 };
