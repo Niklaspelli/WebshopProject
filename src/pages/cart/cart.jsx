@@ -9,7 +9,7 @@ import "./Cart.css";
 
 export const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
-  const [orderPlaced, setOrderPlaced] = useState(false);
+  const [orderPlaced] = useState(false);
   const { cartItems, getTotalCartAmount } = useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
   const navigate = useNavigate();
@@ -71,17 +71,13 @@ export const Cart = () => {
       ) : (
         <div className="checkout">
           {totalAmount > 0 ? (
-            <>
-             
-              
+            <>              
               <Checkout 
                 setCartProducts={prepareOrderData} 
                 cartProducts={cartProducts}
                 totalAmount={totalAmount}
               /> 
               <p className="subtotal">Summa: {totalAmount}:-</p>
-             
-             {/*  <button onClick={sendOrderToAPI} className="cart-button">Kassa</button> */}
             </>
           ) : (
             <>
@@ -93,8 +89,6 @@ export const Cart = () => {
         </div>
       )}
     </div>
-      
-   
   </Grid>
   );
 };

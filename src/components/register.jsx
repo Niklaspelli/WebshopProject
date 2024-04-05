@@ -84,7 +84,7 @@ export const Register = () => {
   return (
     <Container>
       <Card>
-      <Row className="justify-content-center align-items-center h-100">
+      
       {success ? (
         <section>
           <h1>Lyckad registrering!</h1>
@@ -96,6 +96,7 @@ export const Register = () => {
         <section>
           <p ref={errRef} className={errMsg ? "errmsg" :
             "offscreen"} aria-live="assertive">{errMsg}</p>
+            <Row className="justify-content-center align-items-center h-100">
           <h2>Skapa Konto</h2>
           <Col md={6} lg={4} className="justify-content-center"> 
      
@@ -110,7 +111,7 @@ export const Register = () => {
             <Form.Floating className="mb-1" inline style={{ width: '400px', display: 'justify-content-center'}}> 
         <Form.Control
             type="text"
-            id="username"
+            id="floatingInputCustom"
             ref={userRef}
             autoComplete='off'
             onChange={(e) => setUser(e.target.value)}
@@ -137,7 +138,7 @@ export const Register = () => {
             <Form.Floating className="mb-1" inline style={{ width: '400px', display: 'justify-content-center'}}> 
         <Form.Control
             type="password"
-            id="password"
+            id="floatingInputCustom"
             onChange={(e) => setPwd(e.target.value)}
             required
             aria-invalid={validPwd ? "false" : "true"}
@@ -175,12 +176,12 @@ export const Register = () => {
              style={{ backgroundColor: 'grey', color: 'white',  border: 'none' }} 
         />
       
-      </Form.Floating>
+      </Form.Floating> 
             <p id="confirmnote"
               className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
               <FontAwesomeIcon icon={faInfoCircle} />Måste vara samma som första lösenordet
             </p>   
-            </Col>        
+            </Col>    </Row>    
             <Button style={{ backgroundColor: 'black'}} disabled={!validName || !validPwd || !validMatch ? true : false} type="submit" onClick={(e) => handleSubmit(e)}>
         Registrera
       </Button>
@@ -188,7 +189,7 @@ export const Register = () => {
         </section>
       )}
      
-      </Row>
+     
       </Card>
     </Container>
   )
@@ -196,17 +197,7 @@ export const Register = () => {
 
 
 const Card = styled.div`
-input[type="text"],
-input[type="password"],
-button,
-textarea {
-  font-family: 'Nunito', sans-serif;
-  font-size: 22px;
-  padding: 0.25rem;
-  border-radius: 0.5rem;
-}
 
-label,
 button {
   margin-top: 1rem;
 }
