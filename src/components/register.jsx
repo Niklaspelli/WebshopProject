@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import './Login/Login.css';
+import { Container, Button, Row, Col } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import { styled } from 'styled-components';
 
 const USER_REGEX = /^[A-Öa-ö][A-z0-9-_åäöÅÄÖ]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-zåäö])(?=.*[A-ÖÅÄÖ])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -80,7 +82,9 @@ export const Register = () => {
   };
 
   return (
-    <>
+    <Container>
+      <Card>
+      <Row className="justify-content-center align-items-center h-100">
       {success ? (
         <section>
           <h1>Lyckad registrering!</h1>
@@ -92,11 +96,10 @@ export const Register = () => {
         <section>
           <p ref={errRef} className={errMsg ? "errmsg" :
             "offscreen"} aria-live="assertive">{errMsg}</p>
-          <h1>Skapa Konto</h1>
-
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="username">
-              Användarnamn:
+          <h2>Skapa Konto</h2>
+          <Col md={6} lg={4} className="justify-content-center"> 
+     
+          <label htmlFor="floatingInputCustom">Användarnamn:
               <span className={validName ? "valid" : "hide"}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
@@ -104,40 +107,47 @@ export const Register = () => {
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
-            <input
-              type="text"
-              id="username"
-              ref={userRef}
-              autoComplete='off'
-              onChange={(e) => setUser(e.target.value)}
-              required
-              aria-invalid={validName ? "false" : "true"}
-              aria-describedby="uidnote"
-              onFocus={() => setUserFocus(true)}
-              onBlur={() => setUserFocus(false)}
-            />
+            <Form.Floating className="mb-1" inline style={{ width: '400px', display: 'justify-content-center'}}> 
+        <Form.Control
+            type="text"
+            id="username"
+            ref={userRef}
+            autoComplete='off'
+            onChange={(e) => setUser(e.target.value)}
+            required
+            aria-invalid={validName ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={() => setUserFocus(true)}
+            onBlur={() => setUserFocus(false)}
+            style={{ backgroundColor: 'grey', color: 'white',  border: 'none' }} 
+        />
+      
+      </Form.Floating>
             <p id="uidnote" className={userFocus && user && !validName ? "instructions" : "offscreen"}>
               <FontAwesomeIcon icon={faInfoCircle} />
               4 till 24 tecken.<br />
-              Måste börja med en bokstak.<br />
+              Måste börja med en bokstav.<br />
               Bokstäver, nummer, understreck, bindesstreck är tillåtet.
             </p>
-            <label htmlFor="password">
+            <label htmlFor="floatingInputCustom">
               Lösenord:
               <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
               <FontAwesomeIcon icon={faTimes} className={validPwd || !validPwd ? "hide" : "invalid"} />
-
-            </label>
-            <input
-              type="password"
-              id="password"
-              onChange={(e) => setPwd(e.target.value)}
-              required
-              aria-invalid={validPwd ? "false" : "true"}
-              aria-describedby="pwdnote"
-              onFocus={() => setPwdFocus(true)}
-              onBlur={() => setPwdFocus(false)}
-            />
+            </label>          
+            <Form.Floating className="mb-1" inline style={{ width: '400px', display: 'justify-content-center'}}> 
+        <Form.Control
+            type="password"
+            id="password"
+            onChange={(e) => setPwd(e.target.value)}
+            required
+            aria-invalid={validPwd ? "false" : "true"}
+            aria-describedby="pwdnote"
+            onFocus={() => setPwdFocus(true)}
+            onBlur={() => setPwdFocus(false)}
+            style={{ backgroundColor: 'grey', color: 'white',  border: 'none' }} 
+        />
+      
+      </Form.Floating>
             <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
               <FontAwesomeIcon icon={faInfoCircle} />
               8 till 24 tecken.<br />
@@ -147,30 +157,106 @@ export const Register = () => {
               <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span>
               <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
             </p>
-            <label htmlFor="confirm_pwd">
+            <label htmlFor="floatingInputCustom">
               Upprepa Lösenord:
               <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
               <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
             </label>
-            <input
-              type="password"
-              id="confirm_pwd"
-              onChange={(e) => setMatchPwd(e.target.value)}
-              required
-              aria-invalid={validMatch ? "false" : "true"}
-              aria-describedby="confirmnote"
-              onFocus={() => setMatchFocus(true)}
-              onBlur={() => setMatchFocus(false)}
-            />
+            <Form.Floating className="mb-1" inline style={{ width: '400px', display: 'justify-content-center'}}> 
+        <Form.Control
+             type="password"
+             id="confirm_pwd"
+             onChange={(e) => setMatchPwd(e.target.value)}
+             required
+             aria-invalid={validMatch ? "false" : "true"}
+             aria-describedby="confirmnote"
+             onFocus={() => setMatchFocus(true)}
+             onBlur={() => setMatchFocus(false)}
+             style={{ backgroundColor: 'grey', color: 'white',  border: 'none' }} 
+        />
+      
+      </Form.Floating>
             <p id="confirmnote"
               className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
               <FontAwesomeIcon icon={faInfoCircle} />Måste vara samma som första lösenordet
-            </p>
-            <button disabled={!validName || !validPwd || !validMatch ? true : false}> Registrera </button>
-
-          </form>
+            </p>   
+            </Col>        
+            <Button style={{ backgroundColor: 'black'}} disabled={!validName || !validPwd || !validMatch ? true : false} type="submit" onClick={(e) => handleSubmit(e)}>
+        Registrera
+      </Button>
+          
         </section>
       )}
-    </>
+     
+      </Row>
+      </Card>
+    </Container>
   )
 };
+
+
+const Card = styled.div`
+input[type="text"],
+input[type="password"],
+button,
+textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+label,
+button {
+  margin-top: 1rem;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+.instructions {
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    background: #000;
+    color: #fff;
+    padding: 0.25rem;
+    position: relative;
+    bottom: -10px;
+}
+
+.instructions > svg {
+    margin-right: 0.25rem;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.hide {
+    display: none;
+}
+
+.valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.line {
+    display: inline-block;
+}
+`;

@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "phosphor-react";
 import "./Navbar.css";

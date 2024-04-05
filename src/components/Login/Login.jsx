@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import { Container, Button, Col, Row } from "react-bootstrap";
+import  Form  from "react-bootstrap/Form";
+
 
 export const Login = () => {
   const [username, setUsername] = useState('');
@@ -45,31 +47,46 @@ export const Login = () => {
   }, [navigate]);
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
+    <Container>
+      
+      <Row className="justify-content-center align-items-center h-100">
+        <h2>Logga in:</h2>
+        <Col md={6} lg={4} className="justify-content-center"> 
+        <label htmlFor="floatingInputCustom">Användarnamn:</label>
+        <Form.Floating className="mb-1" inline style={{ width: '400px', display: 'justify-content-center'}}> 
+       
+        <Form.Control
+          id="floatingInputCustom"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          style={{ backgroundColor: 'grey', color: 'white'}}
+          
+        />
+       </Form.Floating>
+         <label htmlFor="floatingInputCustom">Lösenord:</label>
+       <Form.Floating className="mb-2" inline style={{ width: '400px'}}> 
+       
+       <Form.Control
+          id="floatingInputCustom"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="mr-sm-5 centered-placeholder"
+          style={{ backgroundColor: 'grey', color: 'white', width: '200px;'}}
+        />
+       </Form.Floating>
         <div className="login-container">
-          <button type="submit" className="login-button">Login</button>
-          <button onClick={() => navigate("/register")} className="Register-button">Skapa</button>
+          <Button style={{ backgroundColor: 'black'}}  className="login-button" type="submit" onClick={(e) => handleLogin(e)}>
+        Login
+      </Button>
+          <Button  style={{ backgroundColor: 'black', margin: "20px"}} type="submit" onClick={() => navigate("/register")}>
+        Skapa
+      </Button>
         </div>
-      </form>
       {errorMessage && <p>{errorMessage}</p>}
-    </div>
+      </Col>
+      </Row>
+    </Container>
   );
 };

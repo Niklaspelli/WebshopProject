@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {FaSearch} from 'react-icons/fa';
+import { Container, Form, FormControl, Button } from 'react-bootstrap';
 import './Searchbar.css';
 
 export const SearchBar = ({ setResults }) => {
@@ -26,9 +27,20 @@ const handleChange = (value) => {
 };
 
   return (
+    <Container className="d-flex justify-content-center">
+    <Form inline style={{ width: '600px', border: "none"}}>
     <div className='topnav'> 
-        <FaSearch className='svg'/>
-      <input onChange={(e) => handleChange(e.target.value)} type="text" placeholder="Sök din T-shirt.." value={input} className='searchbar'/>
+       
+        <FormControl 
+        placeholder="Sök din T-shirt.."  
+        className='mr-sm-5' size="lg" 
+        onChange={(e) => handleChange(e.target.value)} 
+        type="text" 
+        value={input}
+        style={{ backgroundColor: 'grey', color: 'white',  border: 'none' }} 
+        />
       </div>  
+      </Form>
+    </Container>
   )
 }

@@ -20,13 +20,13 @@
 
 .searchbar {
   height: 55px;
-  width: 400px;
+  width: 600px;
 }
 
 .svg{
   color: white;
   position: absolute;
-  top: 10%;
+  top: 20%;
   right: 40%; 
 }
 .results-list {
