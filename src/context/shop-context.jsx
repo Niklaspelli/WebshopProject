@@ -7,7 +7,7 @@ export const ShopContextProvider = (props, token) => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3000/PRODUCTS') 
+        fetch('http://localhost:3000/PRODUCTS')
             .then(res => res.json())
             .then(products => {
                 setProducts(products.PRODUCTS);
@@ -26,15 +26,15 @@ export const ShopContextProvider = (props, token) => {
                     totalAmount += cartItems[item] * itemInfo.price;
                 } else {
                     console.error(`Product with ID ${item} not found.`);
-                    
+
                 }
             }
         }
         return totalAmount;
     };
-    
+
     const addToCart = (itemId) => {
-       
+
         setCartItems((prev) => ({
             ...prev,
             [itemId]: (prev[itemId] || 0) + 1
@@ -42,29 +42,29 @@ export const ShopContextProvider = (props, token) => {
     };
 
     const removeFromCart = (itemId) => {
-      
+
         setCartItems((prev) => ({
             ...prev,
-            [itemId]: prev[itemId]  - 1
+            [itemId]: prev[itemId] - 1
         }));
     };
 
     const updateCartItemCount = (newAmount, itemId) => {
-      
+
         setCartItems((prev) => ({
             ...prev,
-            [itemId]: newAmount 
+            [itemId]: newAmount
         }));
     };
 
     const contextValue = {
-         cartItems, 
-         addToCart, 
-         removeFromCart, 
-         updateCartItemCount,
+        cartItems,
+        addToCart,
+        removeFromCart,
+        updateCartItemCount,
         getTotalCartAmount,
-        };
-console.log(cartItems)
+    };
+    console.log(cartItems)
     return (
         <ShopContext.Provider value={contextValue}>
             {props.children}

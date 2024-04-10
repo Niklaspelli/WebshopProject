@@ -1,4 +1,4 @@
-import  { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { ShopContext } from "../../context/Shop-Context";
 import { Product } from "./Product";
 import { motion } from 'framer-motion';
@@ -8,7 +8,7 @@ import "./Shop.css"
 export function Shop() {
   const [products, setProducts] = useState([]);
   const { addToCart } = useContext(ShopContext); // Access the addToCart function from the context
-  
+
   useEffect(() => {
     fetch('http://localhost:3000/PRODUCTS')
       .then(res => res.json())
@@ -21,21 +21,21 @@ export function Shop() {
   }, [products]);
 
   return (
-    <Grid 
-    animate={{ opacity: 5 }}
-    initial={{ opacity: 0 }}
-    exit={{ opacity: 0}}
-    transition={{ duration: 1 }}>
+    <Grid
+      animate={{ opacity: 5 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}>
       <div className='shop'>
         <div className='shopTitle'>
-        <h1>Amazing Shirts</h1>
+          <h1>Amazing Shirts</h1>
         </div>
         <div className='products'>
-        {products.length > 0 && products.map((product) => (
-          <Product key={product.id} data={product} addToCart={addToCart} />
-        ))}
-    </div> 
-    </div>
+          {products.length > 0 && products.map((product) => (
+            <Product key={product.id} data={product} addToCart={addToCart} />
+          ))}
+        </div>
+      </div>
     </Grid>
   );
 }

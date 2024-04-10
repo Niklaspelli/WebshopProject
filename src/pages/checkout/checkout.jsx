@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { Container, Button, Col, Row } from "react-bootstrap";
-import  Form  from "react-bootstrap/Form";
+import Form from "react-bootstrap/Form";
 
 export const Checkout = ({ setCartProducts, cartProducts, totalAmount }) => {
   const navigate = useNavigate();
@@ -45,9 +45,9 @@ export const Checkout = ({ setCartProducts, cartProducts, totalAmount }) => {
         shippingInfo: shippingInfo,
         paymentInfo: paymentInfo,
         cartProducts: cartProducts,
-        totalAmount: totalAmount 
+        totalAmount: totalAmount
       };
-  
+
       const response = await fetch('http://localhost:3000/orders', {
         method: 'POST',
         headers: {
@@ -55,7 +55,7 @@ export const Checkout = ({ setCartProducts, cartProducts, totalAmount }) => {
         },
         body: JSON.stringify(orderData)
       });
-  
+
       if (response.ok) {
         console.log('Order placed successfully!');
         setOrderPlaced(true);
@@ -78,141 +78,141 @@ export const Checkout = ({ setCartProducts, cartProducts, totalAmount }) => {
       ) : (
         <form onSubmit={handleSubmit}>
           <Row className="justify-content-center align-items-center h-100">
-          <h3>Vem ska ordern skickas till?</h3>
-          <Col md={6} lg={4} className="justify-content-center"> 
-          
-          <label htmlFor="floatingInputCustom">Namn:</label>
-          <Form.Floating 
-          className="mb-1" 
-          inline style={{ width: '400px', display: 'justify-content-center'}}> 
-       
-        <Form.Control
-          id="floatingInputCustom"
-          type="text" name="name"
-           value={shippingInfo.name} 
-           onChange={handleShippingInputChange} 
-           style={{ backgroundColor: 'grey', color: 'white'}}
-           required
-          
-        />
-       </Form.Floating>         
-       <label htmlFor="floatingInputCustom">Gatuadress, husnummer:</label>
-         {/*    <label htmlFor="address">Gatuadress, husnummer:</label> */}
-         <Form.Floating 
-         className="mb-1" 
-         inline style={{ width: '400px', display: 'justify-content-center'}}> 
-       
-        <Form.Control
-          id="floatingInputCustom"
-          type="text" 
-          name="address" 
-          value={shippingInfo.address}
-          onChange={handleShippingInputChange} 
-          style={{ backgroundColor: 'grey', color: 'white'}}
-           required
-          
-        />
-       </Form.Floating>         
-       <label htmlFor="floatingInputCustom">Stad:</label>
-         {/*    <label htmlFor="address">Gatuadress, husnummer:</label> */}
-         <Form.Floating
-          className="mb-1" 
-          inline style={{ width: '400px', display: 'justify-content-center'}}> 
-       
-        <Form.Control
-          id="floatingInputCustom"
-          type="text" 
-          name="city" 
-          value={shippingInfo.city} 
-          onChange={handleShippingInputChange} 
-          style={{ backgroundColor: 'grey', color: 'white'}}
-           required       
-         />
-         </Form.Floating>         
-          
-         
-        <label htmlFor="floatingInputCustom">Postnummer:</label>
-        <Form.Floating 
-        className="mb-1" 
-        inline style={{ width: '400px', display: 'justify-content-center'}}> 
-       
-       <Form.Control
-         id="floatingInputCustom"
-         type="text" name="postalCode" 
-         value={shippingInfo.postalCode} 
-         onChange={handleShippingInputChange} 
-         style={{ backgroundColor: 'grey', color: 'white'}}
-        required       
-        />
-        </Form.Floating>         
-          <label htmlFor="floatingInputCustom">Land:</label>
-          <Form.Floating 
-          className="mb-1" 
-          inline style={{ width: '400px', display: 'justify-content-center'}}> 
-       
-       <Form.Control
-         id="floatingInputCustom"
-         type="text" 
-         name="country" 
-         value={shippingInfo.country} 
-         onChange={handleShippingInputChange} 
-         style={{ backgroundColor: 'grey', color: 'white'}}
-         required
-        />
-        </Form.Floating>                  
-          <h3>Betalningsinformation:</h3>
-          <label htmlFor="floatingInputCustom">Kortnummer:</label>
-          <Form.Floating className="mb-1" inline style={{ width: '400px', display: 'justify-content-center'}}> 
-       
-       <Form.Control
-         id="floatingInputCustom"
-         type="text"
-         name="cardNumber" 
-         value={paymentInfo.cardNumber} 
-         onChange={handlePaymentInputChange} 
-         style={{ backgroundColor: 'grey', color: 'white'}}
-         required
-        />
-        </Form.Floating>          
-          <label htmlFor="floatingInputCustom">Giltighetstid:</label>
-          <Form.Floating className="mb-1" inline style={{ width: '400px', display: 'justify-content-center'}}> 
-       
-       <Form.Control
-         id="floatingInputCustom"
-         type="text" 
-         name="expiryDate" 
-         value={paymentInfo.expiryDate} 
-         onChange={handlePaymentInputChange}
-         style={{ backgroundColor: 'grey', color: 'white'}}
-         required
-        />
-        </Form.Floating>         
-       
-          <label htmlFor="floatingInputCustom">CVV:</label>
-          <Form.Floating 
-          className="mb-1" 
-          inline style={{ width: '400px', display: 'justify-content-center'}}> 
-       
-       <Form.Control
-         id="floatingInputCustom"
-         type="text" 
-         name="cvv" 
-         value={paymentInfo.cvv} 
-         onChange={handlePaymentInputChange}
-         style={{ backgroundColor: 'grey', color: 'white'}}
-         required
-        />
-        </Form.Floating>   
-          
-          </Col>
-</Row>
+            <h3>Vem ska ordern skickas till?</h3>
+            <Col md={6} lg={4} className="justify-content-center">
+
+              <label htmlFor="floatingInputCustom">Namn:</label>
+              <Form.Floating
+                className="mb-1"
+                inline style={{ width: '400px', display: 'justify-content-center' }}>
+
+                <Form.Control
+                  id="floatingInputCustom"
+                  type="text" name="name"
+                  value={shippingInfo.name}
+                  onChange={handleShippingInputChange}
+                  style={{ backgroundColor: 'grey', color: 'white' }}
+                  required
+
+                />
+              </Form.Floating>
+              <label htmlFor="floatingInputCustom">Gatuadress, husnummer:</label>
+              {/*    <label htmlFor="address">Gatuadress, husnummer:</label> */}
+              <Form.Floating
+                className="mb-1"
+                inline style={{ width: '400px', display: 'justify-content-center' }}>
+
+                <Form.Control
+                  id="floatingInputCustom"
+                  type="text"
+                  name="address"
+                  value={shippingInfo.address}
+                  onChange={handleShippingInputChange}
+                  style={{ backgroundColor: 'grey', color: 'white' }}
+                  required
+
+                />
+              </Form.Floating>
+              <label htmlFor="floatingInputCustom">Stad:</label>
+              {/*    <label htmlFor="address">Gatuadress, husnummer:</label> */}
+              <Form.Floating
+                className="mb-1"
+                inline style={{ width: '400px', display: 'justify-content-center' }}>
+
+                <Form.Control
+                  id="floatingInputCustom"
+                  type="text"
+                  name="city"
+                  value={shippingInfo.city}
+                  onChange={handleShippingInputChange}
+                  style={{ backgroundColor: 'grey', color: 'white' }}
+                  required
+                />
+              </Form.Floating>
+
+
+              <label htmlFor="floatingInputCustom">Postnummer:</label>
+              <Form.Floating
+                className="mb-1"
+                inline style={{ width: '400px', display: 'justify-content-center' }}>
+
+                <Form.Control
+                  id="floatingInputCustom"
+                  type="text" name="postalCode"
+                  value={shippingInfo.postalCode}
+                  onChange={handleShippingInputChange}
+                  style={{ backgroundColor: 'grey', color: 'white' }}
+                  required
+                />
+              </Form.Floating>
+              <label htmlFor="floatingInputCustom">Land:</label>
+              <Form.Floating
+                className="mb-1"
+                inline style={{ width: '400px', display: 'justify-content-center' }}>
+
+                <Form.Control
+                  id="floatingInputCustom"
+                  type="text"
+                  name="country"
+                  value={shippingInfo.country}
+                  onChange={handleShippingInputChange}
+                  style={{ backgroundColor: 'grey', color: 'white' }}
+                  required
+                />
+              </Form.Floating>
+              <h3>Betalningsinformation:</h3>
+              <label htmlFor="floatingInputCustom">Kortnummer:</label>
+              <Form.Floating className="mb-1" inline style={{ width: '400px', display: 'justify-content-center' }}>
+
+                <Form.Control
+                  id="floatingInputCustom"
+                  type="text"
+                  name="cardNumber"
+                  value={paymentInfo.cardNumber}
+                  onChange={handlePaymentInputChange}
+                  style={{ backgroundColor: 'grey', color: 'white' }}
+                  required
+                />
+              </Form.Floating>
+              <label htmlFor="floatingInputCustom">Giltighetstid:</label>
+              <Form.Floating className="mb-1" inline style={{ width: '400px', display: 'justify-content-center' }}>
+
+                <Form.Control
+                  id="floatingInputCustom"
+                  type="text"
+                  name="expiryDate"
+                  value={paymentInfo.expiryDate}
+                  onChange={handlePaymentInputChange}
+                  style={{ backgroundColor: 'grey', color: 'white' }}
+                  required
+                />
+              </Form.Floating>
+
+              <label htmlFor="floatingInputCustom">CVV:</label>
+              <Form.Floating
+                className="mb-1"
+                inline style={{ width: '400px', display: 'justify-content-center' }}>
+
+                <Form.Control
+                  id="floatingInputCustom"
+                  type="text"
+                  name="cvv"
+                  value={paymentInfo.cvv}
+                  onChange={handlePaymentInputChange}
+                  style={{ backgroundColor: 'grey', color: 'white' }}
+                  required
+                />
+              </Form.Floating>
+
+            </Col>
+          </Row>
           <Card>
             <button type="submit" className='cart-button'>Skicka ordern</button>
             <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
           </Card>
         </form>
       )}
-      
+
     </Container>
   );
 };

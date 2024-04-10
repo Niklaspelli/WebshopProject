@@ -7,7 +7,7 @@ function ProductDetails() {
     const [data, setData] = useState({});
     const [loading, setLoading] = useState(true); // Add loading state
     const location = useLocation();
-    const { id, productName, price,  productImage } = data;
+    const { id, productName, price, productImage } = data;
     const { addToCart, cartItems } = useContext(ShopContext); // Access the addToCart function from the context
     const cartItemCount = cartItems[id];
 
@@ -47,12 +47,12 @@ function ProductDetails() {
                     <Card>
                         <div className='container'>
                             <div className='cardItem'>
-                            <p className='p-color'>{data.productDescription}</p>
-                            <p><b>Pris: {price} :-</b></p>
-                            <button className="addToCartBttn" onClick={() => addToCart(id)}> Lägg till varukorg {cartItemCount > 0 && <> ({cartItemCount}) </>  }
-                            </button>
+                                <p className='p-color'>{data.productDescription}</p>
+                                <p><b>Pris: {price} :-</b></p>
+                                <button className="addToCartBttn" onClick={() => addToCart(id)}> Lägg till varukorg {cartItemCount > 0 && <> ({cartItemCount}) </>}
+                                </button>
                             </div>
-                        </div>                       
+                        </div>
                     </Card>
                 </React.Fragment>
             )}

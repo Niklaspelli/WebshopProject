@@ -23,7 +23,7 @@ export const Cart = () => {
     return totalPrice;
   };
 
- //Funktion för att förbereda order datan
+  //Funktion för att förbereda order datan
   const prepareOrderData = () => {
     const orderItems = cartProducts.map(product => ({
       productId: product.id,
@@ -48,48 +48,48 @@ export const Cart = () => {
   }, [cartItems]);
 
   return (
-    <Grid 
-    animate={{ opacity: 5 }}
-    initial={{ opacity: 0 }}
-    exit={{ opacity: 0}}
-    transition={{ duration: 1 }}>
-    <div>
+    <Grid
+      animate={{ opacity: 5 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}>
       <div>
-        <h1>Din Varukorg:</h1>
-      </div>
-      <div className="cartItems">
-        {cartProducts.map(product => (
-          <CartItem data={product} key={product.id}/>
-        ))}
-      </div>
-      
-      {orderPlaced ? (
-        <div className="checkout">
-          <h2>Tack för din beställning! Skickas inom 3-5 arbetsdagar!</h2>
-          <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
+        <div>
+          <h1>Din Varukorg:</h1>
         </div>
-      ) : (
-        <div className="checkout">
-          {totalAmount > 0 ? (
-            <>              
-              <Checkout 
-                setCartProducts={prepareOrderData} 
-                cartProducts={cartProducts}
-                totalAmount={totalAmount}
-              /> 
-              <p className="subtotal">Summa: {totalAmount}:-</p>
-            </>
-          ) : (
-            <>
-              <h1 className="emptyCart">Din varukorg är tom!</h1>
-              <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
-            </>
-          )}
-         
+        <div className="cartItems">
+          {cartProducts.map(product => (
+            <CartItem data={product} key={product.id} />
+          ))}
         </div>
-      )}
-    </div>
-  </Grid>
+
+        {orderPlaced ? (
+          <div className="checkout">
+            <h2>Tack för din beställning! Skickas inom 3-5 arbetsdagar!</h2>
+            <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
+          </div>
+        ) : (
+          <div className="checkout">
+            {totalAmount > 0 ? (
+              <>
+                <Checkout
+                  setCartProducts={prepareOrderData}
+                  cartProducts={cartProducts}
+                  totalAmount={totalAmount}
+                />
+                <p className="subtotal">Summa: {totalAmount}:-</p>
+              </>
+            ) : (
+              <>
+                <h1 className="emptyCart">Din varukorg är tom!</h1>
+                <button onClick={() => navigate("/")} className="cart-button">Fortsätt Handla</button>
+              </>
+            )}
+
+          </div>
+        )}
+      </div>
+    </Grid>
   );
 };
 
